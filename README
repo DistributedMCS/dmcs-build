@@ -1,0 +1,36 @@
+# -*- org -*-
+#+STARTUP: showall
+
+This directory contains basic files for building dmcs.
+
+To use this in your dmcs branch, invoke
+
+ $ cd /path/to/your/git/repository/
+ $ git submodule add https://github.com/DistributedMCS/dmcs-build.git dmcs-common
+
+Commit using
+
+ $ git commit -m "Use dmcs-build.git submodule."
+
+You can update other repositories that do not contain the submodules as
+follows:
+
+ $ git submodule init
+ $ git submodule update
+
+or clone fresh copies and init the submodule automatically:
+
+ $ git clone --recursive https://github.com/DistributedMCS/yourthing.git
+
+Then setup symbolic links to the externals in dmcs-common
+
+ $ ln -s dmcs-common/bootstrap.sh .
+ $ ln -s dmcs-common/doxygen.am .
+ $ ln -s dmcs-common/doxygen.cfg .
+ $ ln -s dmcs-common/m4 m4
+
+and add them to your git repository:
+
+ $ git add bootstrap.sh doxygen.{am,cfg} m4/{boost,ax_prog_doxygen}.m4
+ $ git commit -m "Setup symbolic links to dmcs-common."
+ $ git push --all
